@@ -1,7 +1,12 @@
-# getting-started
-Getting started with GitHub actions.
+Make a fork of this repo. 
 
-Update 1
-
-1. Make a fork of this repo
-2. Follow this tutorial: https://docs.microsoft.com/en-us/azure/container-instances/container-instances-github-action
+Add secrets 
+* LOCATION (e.g. northeurope)
+* REGISTRY_LOGIN_SERVER
+* REGISTRY_PASSWORD
+* REGISTRY_USERNAME
+* REPOSITORY_NAME
+* RESOURCE_GROUP
+* SHARE_NAME
+* STORAGE_ACCOUNT_KEY
+* STORAGE_ACCOUNT_NAME
