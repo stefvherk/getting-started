@@ -21,7 +21,12 @@ jobs:
        username: ${{ secrets.REGISTRY_USERNAME }}
        password: ${{ secrets.REGISTRY_PASSWORD }}
    - run: docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/${{ secrets.REPOSITORY_NAME }}:${{ github.run_number }} && docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/${{ secrets.REPOSITORY_NAME }}:${{ github.run_number }}
-   # add run number to DNS name label to avoid double names without removing container first.
+   - name: 'Delete existing container (if exists)'
+     run: |
+      az container delete \
+      --resource-group ${{ secrets.RESOURCE_GROUP }} \
+      --name getting-started-github \
+      --yes || true
    - name: 'Deploy to Azure Container Instances with persistent storage'
      run: |
       az container create \
@@ -31,7 +36,7 @@ jobs:
       --registry-login-server ${{ secrets.REGISTRY_LOGIN_SERVER }} \
       --registry-username ${{ secrets.REGISTRY_USERNAME }} \
       --registry-password ${{ secrets.REGISTRY_PASSWORD }} \
-      --dns-name-label ${{ secrets.RESOURCE_GROUP }}${{ github.run_number }} \
+      --dns-name-label ${{ secrets.RESOURCE_GROUP }} \
       --location ${{ secrets.LOCATION }} \
       --os-type Linux \
       --ports 3000 \
