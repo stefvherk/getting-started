@@ -15,6 +15,6 @@ Create a fileshare in your storage account
 * STORAGE_ACCOUNT_NAME (Account name as shown in Access keys)
 * SHARE_NAME (Your share's name)
 
-Important!! The .yml file utilizes your resource group name for the DNS. This MUST be unique. Make sure the storage group name is unique, or change the value in the .yml file to correspond with a unique value. (at --dns-name-label. 
+Important!! The .yml file utilizes your resource group name for the DNS. This MUST be unique. Make sure the storage group name is unique, or change the value in the .yml file to correspond with a unique value. (at --dns-name-label)
 
 Use the tutorial in Canvas to obtain your azure credentials and make sure the AZURE_CREDENTIALS secret exists. Good luck!
